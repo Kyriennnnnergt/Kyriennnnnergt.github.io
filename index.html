@@ -1,27 +1,720 @@
-<!DOCTYPE>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>My Second Web Page</title>
-  <head>
-  <body style="background-color:lavender;">
-  <h1 style="background-color:lavender;">My first website</h1>
-    <h2>I hope you like here.</h2>
-      <h3>I hope you like here.</h3>
-        <h4>I hope you like here.</h4>
-          <h5>I hope you like here.</h5>
-            <h6>I hope you like here.</h6>
-              <p style="color:midnightblue;">This is my paragraph.</p><br>
-              <p>This is another paragraph</p>
-              <b>Bold text</b>
-              <i>Italic</i>
-              <u>Underlinedtext</u>
-              <em>Emphasized</em>
-              <strong>Strong text</strong>
-              <sub>Subscript</sub>
-              <sup>Superscript text</sup>
-              <img src="https://img0.baidu.com/it/u=4186795113,1234110012&fm=253&fmt=auto&app=120&f=JPEG?w=1024&h=590"></img>
-              <a href="http://by.cuc.edu.cn/">This is the link to CUC's website</a>
-              <img src="camps.jepg"></img>
-     </body>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="logo2.png" type="image/png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>树洞</title>
+    <link rel="stylesheet" href="https://static.fontawesome.com/css/fontawesome-app.css">
+
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400&display=swap">
+
+    <style>
+
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Source Sans Pro", sans-serif;
+        }
+
+        html,
+        body {
+          background-image: url('background.png');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          min-height: 200vh;
+      }
+
+      .container {
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      header {
+      position: fixed;
+      top: 0;
+      left: 7;
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: rgba(51, 51, 51, 0.8);
+      color: #fff;
+      z-index: 1000;
+  }
+
+  nav ul {
+      display: flex;
+      list-style: none;
+  }
+
+  nav ul li {
+      margin-right: 10px;
+  }
+
+  nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+  }
+
+
+
+        .button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 380px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -80px;
+        }
+
+        .prev,
+        .next {
+            transition: transform 0.25s ease;
+            z-index: 99999;
+            bottom: 5px;
+        }
+
+        .prev i,
+        .next i {
+            font-size: 90px;
+            color: #fff;
+            cursor: pointer;
+            text-shadow: 0 0 10px #ffffff;
+        }
+
+        .shell_body {
+            width: 100%;
+            transform: scale(.8);
+             margin-top: 50px;
+            padding: 20px 0 150px 0;
+        }
+
+        .shell_slider {
+            position: relative;
+            transition: transform 1s ease-in-out;
+            background: transparent;
+        }
+
+        .item {
+            position: relative;
+            float: left;
+            margin: 0 20px;
+        }
+
+        .frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+            transform-style: preserve-3d;
+        }
+
+        .frame:after {
+            content: "";
+            position: absolute;
+            bottom: -16%;
+            width: 100%;
+            height: 60px;
+            background: #ffffff1c;
+            box-shadow: 0px 0px 15px 5px #ffffff1c;
+            transform: rotateX(90deg) translate3d(0px, -20px, 0px);
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid #fff;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .box h1,
+        .box span {
+            color: #fff;
+            transform: translateZ(20px);
+        }
+
+        .box h1 {
+            text-shadow: 0 0 30px #1f05b4;
+            font-size: 100px;
+        }
+
+        .box span {
+            position: absolute;
+            bottom: 20px;
+            padding: 0 25px;
+            text-shadow: 0 0 10px #1f05b4;
+        }
+
+        .front,
+        .left,
+        .right {
+            box-shadow: 0 0 50px #ffffff;
+            background-size: cover;
+        }
+
+        .right,
+        .left {
+            top: 0;
+            width: 60px;
+            backface-visibility: hidden;
+        }
+
+        .left {
+            left: 0;
+            border-left-width: 5px;
+            transform: translate3d(1px, 0, -60px) rotateY(-90deg);
+            transform-origin: 0%;
+        }
+
+        .right {
+            right: 0;
+            border-right-width: 5px;
+            transform: translate3d(-1px, 0, -60px) rotateY(90deg);
+            transform-origin: 100%;
+        }
+
+
+        .forum-container {
+    max-width: 800px;
+    margin: 300px auto 20px;
+    padding: 20px;
+  }
+
+  .forum-posts {
+    margin-bottom: 20px;
+  }
+
+  .post {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .post-author {
+    font-weight: bold;
+  }
+
+  .post-content img {
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .create-post {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+
+  #createPostModal {
+    display: none;
+  }
+
+
+  .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5); /* 透明黑色背景 */
+      z-index: 9999;
+      display: none; /* 初始状态隐藏 */
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s ease; /* 添加透明度过渡效果 */
+      opacity: 0; /* 初始状态透明 */
+  }
+
+  .popup.show {
+      display: flex; /* 显示弹出窗口 */
+      opacity: 1; /* 显示时完全不透明 */
+  }
+
+  .popup-content {
+      text-align: center;
+      position: relative;
+      background-color: #333; /* 与导航栏一致 */
+      width: 45vw;
+      height: 60vh;
+      transition: transform 0.5s ease; /* 添加滑动动画 */
+      transform: translateY(-100%);
+      color: white;
+      font-size: 16px;
+
+  }
+
+
+
+  #popupImage {
+      max-width: 100%;
+      max-height: 100vh; /* 调整高度以适应弹窗大小 */
+      display: block;
+      margin: 0 auto; /* 居中图片 */
+  }
+
+
+  .popup.show .popup-content {
+      transform: translateY(0); /* 弹窗滑出到视图中间位置 */
+  }
+
+  #closeButton {
+      display: none; /* 初始状态下隐藏按钮 */
+  }
+
+.create-post {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#createPost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#createPost h2 {
+    margin-bottom: 10px;
+}
+
+#postForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#postForm input,
+#postForm textarea,
+#postForm button {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#postForm button {
+    align-self: flex-start; /* 确保按钮左对齐 */
+}
+
+
+.popup-button {
+    opacity: 0.5; /* 设置初始透明度 */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 添加过渡效果，包括透明度和缩放 */
+    transform: scale(1.1); /* 初始缩放比例为 1 */
+}
+
+.popup-button:hover {
+    opacity: 0.8; /* 悬停时透明度为 1 */
+    transform: scale(1.2); /* 悬停时放大到 1.1 倍 */
+}
+
+
+    </style>
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div class="container">
+      <header>
+          <div class="left-nav">
+              <nav>
+                  <ul>
+                      <li><a href="#" >新闻</a></li><li><a href="#" id="forumLink">论坛</a></li>
+
+                  </ul>
+              </nav>
+          </div>
+          <div class="right-nav">
+              <nav>
+                  <ul>
+                      <li><a href="https://shuyexingzhi.github.io/">主页</a></li>
+                  </ul>
+              </nav>
+          </div>
+      </header>
+
+  </div>
+
+
+
+
+    <div class="shell" >
+        <div class="shell_body">
+            <div class="button">
+                <div class="prev"><i class="iconfont icon-backward_filled"></i></div>
+                <div class="next"><i class="iconfont icon-forward_filled"></i></div>
+            </div>
+
+            <div class="shell_slider">
+
+
+
+
+
+              <div class="item">
+                <div class="frame">
+                  <div class="box front">
+                    <img src="水晶兰.jpg" alt="水晶兰" onclick="openPopup(1)">
+                    <span>⽟舍国家森林公园管理处⼯作⼈员在开展⽇常巡护⼯作时，在密林中发现百余株近危级珍稀植物⽔晶兰...</span>
+                    <button class="popup-button" onclick="openPopup(1)">查看详情</button>
+                  </div>
+                  <div class="box left"></div>
+                  <div class="box right"></div>
+                </div>
+              </div>
+
+
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="baozi.jpeg" alt="Image Description">
+                            <span>国家⼆级保护野⽣植物阴⽣桫椤孢⼦体幼苗的孢⼦克隆取得成功...</span>
+                             <button class="popup-button" onclick="openPopup(2)">查看详情</button>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                            <img src="盆.png" alt="Image Description">
+                            <span>6月17日，记者从市林业部门获悉，安庆市发现珍稀兰科植物——中华盆距兰...</span>
+                              <button class="popup-button" onclick="openPopup(3)">查看详情</button>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                              <img src="xin.webp" alt="Image Description">
+                            <span>我国又发现一新物种！四川发现凤仙花属植物新种...</span>
+                              <button class="popup-button" onclick="openPopup(4)">查看详情</button>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                              <img src="jidi.png" alt="Image Description">
+                            <span>贵阳市将建成⾸个珍稀濒危野⽣植物原⽣境保护点...</span>
+                              <button class="popup-button" onclick="openPopup(5)">查看详情</button>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="frame">
+                        <div class="box front">
+                              <img src="quanqiou.jpeg" alt="Image Description">
+                            <span>全球100万种物种⾯临灭绝威胁，⽣物多样性保护正成为焦点议题...</span>
+                              <button class="popup-button" onclick="openPopup(6)">查看详情</button>
+                        </div>
+                        <div class="box left"></div>
+                        <div class="box right"> </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <title>论坛模块</title>
+
+
+    <div class="forum-container" id="forumSection">
+  <div class="forum-posts">
+    <!-- 已有帖子展示部分 -->
+    <div class="post" id="postA">
+      <div class="post-header">
+        <img src="11.png" alt="落落">
+        <span class="post-author">落落</span>
+      </div>
+      <div class="post-content">
+        <h2>小盼菩提 | Ficus microcarpa</h2>
+        <p>小盼菩提代表着境界，正如古人所说：身是菩提树，心如明镜台。这也表现着菩提的大智，是一款非常佛系的绿植，也被称作“智慧树”，寓意着美好与幸运。</p>
+        <img src="12.png" alt="Post A">
+      </div>
+    </div>
+    <div class="post" id="postB">
+      <div class="post-header">
+        <img src="21.png" alt="Avatar">
+        <span class="post-author">夏洛特花园</span>
+      </div>
+      <div class="post-content">
+        <h2>#枝干番杏</h2>
+        <p>一点都舍不得修剪了～#养花人的乐趣 </p>
+        <img src="22.png" alt="Post B">
+      </div>
+    </div>
+    <div class="post" id="postC">
+      <div class="post-header">
+        <img src="31.png" alt="Avatar">
+        <span class="post-author">yuyi</span>
+      </div>
+      <div class="post-content">
+        <h2>中山大学的树张力</h2>
+        <p>中山大学里有很多百年古树，像百年公园。第一次看到樟树会长的这么蜿蜒，来的时候是阴雨天，很有魔法森林的感觉。中山大学创办于1924年，今年是中山大学的100周年校庆，世纪华诞，祝中大生日快乐！</p>
+        <img src="32.png" alt="Post C">
+      </div>
+    </div>
+  </div>
+  <!-- 用户填写空白帖子部分 -->
+  <div class="create-post" id="createPost">
+    <h2>创建新帖子</h2>
+    <form id="postForm">
+      <input type="text" id="postTitle" placeholder="标题">
+      <textarea id="postContent" placeholder="帖子内容"></textarea>
+      <input type="file" id="imageUpload" accept="image/*">
+      <button type="submit">发布帖子</button>
+    </form>
+  </div>
+</div>
+
+
+
+    <div id="popup" class="popup" onclick="closePopup()">
+      <div class="popup-content" onclick="event.stopPropagation();">
+        <img id="popupImage" src="" alt="Popup Image">
+        <button id="closeButton" onclick="closePopup()">关闭</button>
+      </div>
+    </div>
+
+
+</body>
+
+<script>
+
+
+    var items = document.getElementsByClassName('item');
+    document.addEventListener("DOMContentLoaded", function() {
+    // 获取论坛链接的引用
+    var forumLink = document.getElementById("forumLink");
+
+    // 获取论坛部分的引用
+    var forumSection = document.getElementById("forumSection");
+
+    // 添加点击事件监听器到论坛链接
+    forumLink.addEventListener("click", function(event) {
+        event.preventDefault(); // 阻止默认的链接跳转行为
+
+        // 平滑滚动到论坛部分
+        forumSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+});
+
+
+
+    (function () {
+        "use strict";
+        var shell = document.getElementsByClassName('shell')[0];
+        var slider = shell.getElementsByClassName('shell_slider')[0];
+        var items = shell.getElementsByClassName('item');
+        var prevBtn = shell.getElementsByClassName('prev')[0];
+        var nextBtn = shell.getElementsByClassName('next')[0];
+
+        var width, height, totalWidth, margin = 20,
+            currIndex = 0,
+            interval, intervalTime = 3000;
+        function init() {
+
+            resize();
+            move(Math.floor(items.length / 2));
+            bindEvents();
+            timer();
+        }
+        function resize() {
+
+            width = Math.max(window.innerWidth * .20, 275);
+            height = window.innerHeight * .5;
+            totalWidth = width * items.length;
+
+            slider.style.width = totalWidth + "px";
+
+            for (var i = 0; i < items.length; i++) {
+                let item = items[i];
+                item.style.width = (width - (margin * 2)) + "px";
+                item.style.height = height + "px";
+            }
+        }
+        function bindEvents() {
+
+            window.onresize = resize;
+
+            prevBtn.addEventListener('click', () => { prev(); });
+            nextBtn.addEventListener('click', () => { next(); });
+        }
+        init();
+        function move(index) {
+
+            if (index < 1) index = items.length;
+            if (index > items.length) index = 1;
+            currIndex = index;
+
+            for (var i = 0; i < items.length; i++) {
+                let item = items[i],
+                    box = item.getElementsByClassName('frame')[0];
+                if (i == (index - 1)) {
+
+                    item.classList.add('item--active');
+                    box.style.transform = "perspective(1200px)";
+                } else {
+
+                    item.classList.remove('item--active');
+                    box.style.transform = "perspective(1200px) rotateY(" + (i < (index - 1) ? 40 : -40) + "deg)";
+                }
+            }
+
+            slider.style.transform = "translate3d(" + ((index * -width) + (width / 2) + window.innerWidth / 2) + "px, 0, 0)";
+
+            var frontBox = items[index - 1].getElementsByClassName('front')[0];
+            document.body.style.backgroundImage = frontBox.style.backgroundImage;
+        }
+        function timer() {
+
+            clearInterval(interval);
+            interval = setInterval(() => {
+                move(++currIndex);
+            }, intervalTime);
+        }
+
+        function prev() {
+            move(--currIndex);
+            timer();
+        }
+        function next() {
+            move(++currIndex);
+            timer();
+        }
+    })();
+
+
+
+    function openPopup(itemId) {
+    const popupContents = {
+        1: "图片一.png",
+        2: "图片二.png",
+        3: "图三.png",
+        4: "图四.png",
+        5: "图五.png",
+        6: "图六.png",
+        // Add more itemIds and corresponding image paths as needed
+    };
+
+    const popupImage = document.getElementById('popupImage');
+
+    // Set popup image source based on itemId
+    popupImage.src = popupContents[itemId];
+
+    const popup = document.getElementById('popup');
+    const popupContent = document.querySelector('.popup-content');
+
+    // Display the popup
+    popup.classList.add('show');
+
+    // Force reflow to apply CSS transition
+    void popup.offsetWidth;
+
+    // Apply slide-in effect
+    popupContent.style.transform = 'translateY(0)';
+}
+
+function closePopup() {
+    const popup = document.getElementById('popup');
+    const popupContent = document.querySelector('.popup-content');
+
+    // Apply slide-out effect
+    popupContent.style.transform = 'translateY(-100%)';
+
+    // Wait for the animation to finish and then hide the popup
+    setTimeout(() => {
+        popup.classList.remove('show');
+    }, 300); // Adjust timing to match CSS transition duration
+}
+
+document.getElementById('postForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // 获取用户输入的帖子标题和内容
+  const title = document.getElementById('postTitle').value;
+  const content = document.getElementById('postContent').value;
+  const imageFile = document.getElementById('imageUpload').files[0];
+
+  // 创建新的帖子元素
+  const newPost = document.createElement('div');
+  newPost.className = 'post';
+
+  const postHeader = document.createElement('div');
+  postHeader.className = 'post-header';
+  postHeader.innerHTML = `
+    <img src="avatar.png" alt="Avatar">
+    <span class="post-author">小白杨</span>
+  `;
+
+  const postContent = document.createElement('div');
+  postContent.className = 'post-content';
+  postContent.innerHTML = `
+    <h2>${title}</h2>
+    <p>${content}</p>
+    <img src="${URL.createObjectURL(imageFile)}" alt="New Post Image">
+  `;
+
+  newPost.appendChild(postHeader);
+  newPost.appendChild(postContent);
+
+  // 插入新帖子到已有帖子的下方
+  const forumPosts = document.querySelector('.forum-posts');
+  forumPosts.appendChild(newPost);
+
+  // 清空表单
+  document.getElementById('postForm').reset();
+});
+</script>
+
+</html>
